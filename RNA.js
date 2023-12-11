@@ -16,16 +16,16 @@ class Neuron {
     }
 };
 
-g(signalList = []) {
+g(signalList = []); {
     let u = 0;
 
     for (let i = 0; i < this.weigthList.length; i++) {
-        u += signalList[i] + this.weigthList[i];
+        u += signalList[i] * this.weigthList[i]
         
     }
 
-    if(Math.tanh(u) > this.bias) return 1; //Ativado
-    else return 0; //Desativado
+    if (Math.tanh(u) > this.bias) return 1; // Ativado
+    else return0; // Desativado
 };
 
 mutate(rate = 1); {
@@ -71,16 +71,17 @@ mutate(rate = 1); {
 load(rna); {
     if (!rna) return;
     try{
-        this.levelList = rna.Map((neuronList) =>{
-            return neuronList.Map((neuron) => {
-                const n = new neuron();
+        this.levelList = rna.map((neuronList) => {
+            return neuronList.map((neuron) => {
+                const n = new Neuron();
                 n.bias = neuron.bias;
                 n.weigthList = neuron.weigthList;
 
                 return n;
             });
         });
-    }catch(e) {
+
+    } catch(e) {
         return;
     }
 

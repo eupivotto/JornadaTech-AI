@@ -12,12 +12,12 @@ let bestRNA = null;
 
 function fillDinoList() {
     for (let i = 0; i < SAMPLES; i++) {
-        dinoList[i] = new RNA(3,[10, 10, 2])
+        dinoList[i] = new RNA(3,[10, 10, 2]);
         dinoList[i].load(bestRNA)
-        if (i < 0) dinoList[i].mutate(0.5)
+        if (i > 0) dinoList[i].mutate(0.2);
         
     }
-    console.log('Lista de Dinossauros Criada:')
+    console.log('Lista de Dinossauros Criada:');
 }
 
 setTimeout(() => {
